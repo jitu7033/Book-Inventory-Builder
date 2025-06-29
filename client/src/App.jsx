@@ -6,11 +6,13 @@ import axios from 'axios';
 const App = () => {
   const [books, setBooks] = useState([]);
 
+  const baseURL = import.meta.env.VITE_API_URL;
+
   const fetchBooks = async () => {
-    const res = await axios.get('http://localhost:5000/api/books');
+    const res = await axios.get(`${baseURL}/api/books`);
     setBooks(res.data);
   };
-
+  
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -23,5 +25,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
