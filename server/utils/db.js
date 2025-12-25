@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const uri = process.env.MONGO_URI;
+  const uri = process.env.MONGO_URI || "mongodb+srv://jitendrakumar_db_user:KQifubGjrZM6Xcw4@cluster0.fkipar7.mongodb.net/?appName=Cluster0"
   if (!uri) {
     throw new Error("MONGO_URI not defined in .env");
   }

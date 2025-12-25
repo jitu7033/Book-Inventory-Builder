@@ -4,13 +4,14 @@ require('dotenv').config();
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./utils/db');
-
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 const bookRoutes = require('./routes/bookRoutes');
+const { adminLogger } = require('./backend/src');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(adminLogger)
 
 
 app.use('/api/books', bookRoutes);
